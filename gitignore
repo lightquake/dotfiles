@@ -1,0 +1,9 @@
+# Editor stuff
+*~
+#*
+TAGS
+
+# Haskell stuff
+/.cabal-sandbox
+/cabal.sandbox.config
+/dist/
