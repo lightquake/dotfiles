@@ -9,6 +9,6 @@
 	name = Kata
 	email = lightquake@amateurtopologist.com
 [core]
-	excludesfile = /home/kata/.gitignore
+	excludesfile = ~/.gitignore
 [merge]
 	conflictstyle = diff3
