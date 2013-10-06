@@ -20,3 +20,5 @@
   ;; groups. C-u f8 to jump back again.
   (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-navigate-imports)
 )
+
+(require 'hamlet-mode)
