@@ -1,10 +1,9 @@
 # -*- mode: sh; -*-
-
 ZSH=$HOME/.oh-my-zsh
 DISABLE_AUTO_UPDATE="true"
 DISABLE_CORRECTION="true"
 
-ZSH_THEME="robbyrussell"
+ZSH_THEME="space"
 
 plugins=(git)
 
