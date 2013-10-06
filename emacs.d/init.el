@@ -78,6 +78,8 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(menu-bar-mode -1)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
