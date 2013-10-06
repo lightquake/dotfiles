@@ -40,12 +40,15 @@
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
 
-;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Haskell stuff, too much for here.
+(load "~/.emacs.d/init/haskell")
 
+
+;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Random keybindings
 (global-set-key (kbd "C-x k") 'kill-buffer)
-(global-set-key (kbd "C-c C-/") 'redraw-display)
+
 ;; I like auto-indent on newline, dammit.
 (global-set-key "
 " (quote newline-and-indent))
