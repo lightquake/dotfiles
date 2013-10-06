@@ -1,4 +1,4 @@
-local to_hash="$(hostname)"
+local to_hash="$(whoami)@$(hostname)"
 local host_color=$(printf "%03d" "$(echo ${to_hash} | openssl sha1 -binary | od -N1 -tu2 -An)")
 PROMPT='$FG[$host_color]%2c%f $ '
 RPROMPT='$(git_prompt_info)'
