@@ -1,5 +1,5 @@
 (require 'fic-mode)
-(add-hook 'haskell-mode-hook 'fic-ext-mode)
+(add-hook 'haskell-mode-hook 'fic-mode)
 
 (add-hook 'haskell-mode'hook 'turn-on-haskell-indentation)
 
