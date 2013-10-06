@@ -13,6 +13,8 @@
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
   ;; Switch to the REPL.
   (define-key haskell-mode-map (kbd "C-c C-z") 'haskell-interactive-switch)
+  ;; Build.
+  (define-key haskell-mode-map (kbd "C-c C-c") 'haskell-process-cabal-build)
 
   ;; Jump to the imports. Keep tapping to jump between import
   ;; groups. C-u f8 to jump back again.
