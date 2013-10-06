@@ -35,10 +35,9 @@
 ;; Always want markers at column 80.
 (add-hook 'c-mode-common-hook (lambda () (interactive) (column-marker-1 80)))
 
-;; Get the right $PATH on OS X systems.
+;; Get the right $PATH.
 (require 'exec-path-from-shell)
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
+(exec-path-from-shell-initialize)
 
 ;; Haskell stuff, too much for here.
 (load "~/.emacs.d/init/haskell")
