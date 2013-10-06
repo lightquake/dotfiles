@@ -18,4 +18,5 @@ install emacs.d
 install gitconfig
 install gitignore
 install zshrc
+install tmux.conf
 $LN -s "$PWD/$SRC/space.zsh-theme" "$HOME/.oh-my-zsh/themes/space.zsh-theme"
