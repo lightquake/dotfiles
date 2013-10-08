@@ -6,6 +6,9 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+;; t to not error if it doesn't exist
+(load "~/.emacs.d/local/init" t)
+
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'column-marker)
