@@ -7,7 +7,7 @@
 (package-initialize)
 
 ;; t to not error if it doesn't exist
-(load "~/.emacs.d/local/init" t)
+(load "~/.emacs.d/local" t)
 
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -43,7 +43,7 @@
 (exec-path-from-shell-initialize)
 
 ;; Haskell stuff, too much for here.
-(load "~/.emacs.d/init/haskell")
+(load "~/.emacs.d/haskell")
 
 
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
