@@ -82,6 +82,13 @@
 
 (menu-bar-mode -1)
 
+(require 'org-install)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map (kbd "C-c l") 'org-store-link)
+(define-key global-map (kbd "C-c a") 'org-agenda)
+(add-hook 'org-mode-hook 'visual-line-mode)
+(add-hook 'org-mode-hook 'org-bullets-mode)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
@@ -113,7 +120,10 @@
  '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-global-externs (quote ("$" "_" "require" "define" "console")))
+ '(org-agenda-skip-deadline-prewarning-if-scheduled 2)
  '(org-agenda-skip-scheduled-if-done t)
+ '(org-agenda-start-on-weekday nil)
+ '(org-columns-default-format "%25ITEM %SCHEDULED %TAGS")
  '(org-enforce-todo-dependencies t)
  '(org-log-done (quote time))
  '(org-log-repeat (quote time))
@@ -123,6 +133,7 @@
  '(org-src-fontify-natively t)
  '(org-src-preserve-indentation t)
  '(org-startup-indented t)
+ '(org-tags-column -75)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
  '(tool-bar-mode nil)
@@ -141,7 +152,11 @@
  '(hl-line ((t (:inherit highlight :background "#aaa"))) t)
  '(magit-item-highlight ((t (:background "dim gray"))))
  '(magit-log-graph ((t (:foreground "grey80" :weight bold))))
+ '(org-agenda-structure ((t (:foreground "light gray"))))
+ '(org-done ((t (:foreground "#00ff00" :weight bold))))
  '(org-hide ((t (:foreground "black"))))
+ '(org-scheduled ((t (:foreground "medium turquoise"))))
+ '(org-scheduled-today ((t (:foreground "medium turquoise"))))
  '(table-cell ((t (:foreground "peach puff"))) t)
  '(wc-goal-face ((t (:foreground "pale green")))))
 (put 'downcase-region 'disabled nil)
