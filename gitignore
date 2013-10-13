@@ -7,3 +7,7 @@ TAGS
 /.cabal-sandbox
 /cabal.sandbox.config
 /dist/
+
+# Object files
+*.o
+*.hi
