@@ -127,6 +127,7 @@
  '(org-agenda-skip-deadline-prewarning-if-scheduled 2)
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-start-on-weekday nil)
+ '(org-bullets-bullet-list (quote ("◉" "○" "◎")))
  '(org-columns-default-format "%25ITEM %SCHEDULED %TAGS")
  '(org-enforce-todo-dependencies t)
  '(org-log-done (quote time))
