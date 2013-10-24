@@ -140,6 +140,7 @@
  '(org-tags-column -75)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
+ '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
  '(uniquify-separator "/"))
