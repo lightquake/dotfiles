@@ -7,7 +7,11 @@
 (package-initialize)
 
 ;; t to not error if it doesn't exist
-(load "~/.emacs.d/local" t)
+(load "~/.emacs.d/local" :noerror)
+
+
+;; start server for emacsclient
+(server-start)
 
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
