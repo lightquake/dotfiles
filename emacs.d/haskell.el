@@ -1,6 +1,6 @@
 (require 'fic-mode)
 (add-hook 'haskell-mode-hook 'fic-mode)
-(add-hook 'haskell-mode 'turn-on-haskell-indentation)
+(add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
 
 (require 'column-marker)
 (add-hook 'haskell-mode-hook (lambda () (interactive) (column-marker-1 80)))
