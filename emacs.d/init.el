@@ -78,6 +78,12 @@
 (prefer-coding-system 'utf-8)
 
 (add-hook 'markdown-mode-hook 'visual-line-mode)
+;; Make sure fenced code blocks are highlighted before anything else.
+(defun my/patch-font-lock-keywords ()
+  (setq markdown-mode-font-lock-keywords-basic
+        (cons (cons 'markdown-match-fenced-code-blocks '((0 markdown-pre-face)))
+              markdown-mode-font-lock-keywords-basic)))
+(add-hook 'markdown-mode-hook 'my/patch-font-lock-keywords)
 
 (require 'undo-tree)
 (global-undo-tree-mode)
