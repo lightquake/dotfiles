@@ -77,9 +77,7 @@
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
 
-(require 'wc-mode)
 (add-hook 'markdown-mode-hook 'visual-line-mode)
-(add-hook 'markdown-mode-hook 'wc-mode)
 
 (require 'undo-tree)
 (global-undo-tree-mode)
