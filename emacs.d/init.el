@@ -9,7 +9,6 @@
 ;; t to not error if it doesn't exist
 (load "~/.emacs.d/local" :noerror)
 
-
 ;; start server for emacsclient
 (server-start)
 
@@ -52,8 +51,16 @@
 
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Random keybindings
+;; Random keybindings.
 (global-set-key (kbd "C-x k") 'kill-buffer)
+
+;; Windmove. Not all platforms are going to have hyper, but that's fine.
+(global-set-key (kbd "C-c <left>") 'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>") 'windmove-up)
+(global-set-key (kbd "C-c <down>") 'windmove-down)
+(windmove-default-keybindings 'hyper)
+
 
 ;; I like auto-indent on newline, dammit.
 (global-set-key "
