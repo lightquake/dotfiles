@@ -9,4 +9,5 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.cask/bin:$HOME/.cabal/bin:$PATH
+
