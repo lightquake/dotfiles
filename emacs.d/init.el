@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/"))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
@@ -51,6 +53,35 @@
 
 
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; tahoe stuff
+(defvar tahoe-serve/prefix "http://serve.aleph-null.io/")
+
+(defun tahoe-serve/make-sentinel (filename)
+  (lambda (proc change)
+    (when (eq (process-status proc) 'exit)
+      (with-current-buffer "*tahoe-serve*"
+        (let ((uri (replace-regexp-in-string "\n$" "" (thing-at-point 'line))))
+          (message (concat filename " is uploaded at URL "
+			   tahoe-serve/prefix uri)))))))
+
+(defun tahoe-serve/put (filename)
+  (interactive
+   (let ((buffer-basename (and (buffer-file-name)
+                               (file-name-nondirectory (buffer-file-name)))))
+     (list (read-string
+            (if (tahoe-serve/buffer-basename)
+                (format "Filename (default %s):"
+                        (tahoe-serve/buffer-basename))
+              "Filename: ")
+            nil nil (tahoe-serve/buffer-basename)))))
+  (if (string= filename "")
+      (message "Must supply filename")
+      (let ((proc (start-process "tahoe serve" "*tahoe-serve*"
+                                  "tahoe" "put" filename
+                                  (concat "paste/" filename))))
+        (set-process-sentinel proc (tahoe-serve/make-sentinel filename)))))
+
 
 ;; Random keybindings.
 (global-set-key (kbd "C-x k") 'kill-buffer)
