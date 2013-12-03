@@ -65,23 +65,28 @@
           (message (concat filename " is uploaded at URL "
 			   tahoe-serve/prefix uri)))))))
 
+(defun tahoe-serve/put-region (start end filename)
+  (interactive "r\nsFilename: ")
+  (let ((proc (start-process "tahoe serve" "*tahoe-serve*"
+                             "tahoe" "put" "-"
+                             (concat "paste/" filename))))
+    (set-process-sentinel proc (tahoe-serve/make-sentinel filename))
+    (process-send-region proc start end)
+    (process-send-eof proc)))
+
 (defun tahoe-serve/put (filename)
   (interactive
    (let ((buffer-basename (and (buffer-file-name)
                                (file-name-nondirectory (buffer-file-name)))))
      (list (read-string
             (if (tahoe-serve/buffer-basename)
-                (format "Filename (default %s):"
+                (format "Filename (default %s): "
                         (tahoe-serve/buffer-basename))
               "Filename: ")
             nil nil (tahoe-serve/buffer-basename)))))
   (if (string= filename "")
       (message "Must supply filename")
-      (let ((proc (start-process "tahoe serve" "*tahoe-serve*"
-                                  "tahoe" "put" filename
-                                  (concat "paste/" filename))))
-        (set-process-sentinel proc (tahoe-serve/make-sentinel filename)))))
-
+    (tahoe-serve/put-region (point-min) (point-max) filename)))
 
 ;; Random keybindings.
 (global-set-key (kbd "C-x k") 'kill-buffer)
