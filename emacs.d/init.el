@@ -61,9 +61,10 @@
   (lambda (proc change)
     (when (eq (process-status proc) 'exit)
       (with-current-buffer "*tahoe-serve*"
-        (let ((uri (replace-regexp-in-string "\n$" "" (thing-at-point 'line))))
-          (message (concat filename " is uploaded at URL "
-			   tahoe-serve/prefix uri)))))))
+        (let* ((uri (replace-regexp-in-string "\n$" "" (thing-at-point 'line)))
+               (url (concat tahoe-serve/prefix uri)))
+          (kill-new url)
+          (message (format "%s is uploaded at URL %s" filename url)))))))
 
 (defun tahoe-serve/put-region (start end filename)
   (interactive "r\nsFilename: ")
@@ -79,11 +80,10 @@
    (let ((buffer-basename (and (buffer-file-name)
                                (file-name-nondirectory (buffer-file-name)))))
      (list (read-string
-            (if (tahoe-serve/buffer-basename)
-                (format "Filename (default %s): "
-                        (tahoe-serve/buffer-basename))
+            (if buffer-basename
+                (format "Filename (default %s): " buffer-basename)
               "Filename: ")
-            nil nil (tahoe-serve/buffer-basename)))))
+            nil nil buffer-basename))))
   (if (string= filename "")
       (message "Must supply filename")
     (tahoe-serve/put-region (point-min) (point-max) filename)))
