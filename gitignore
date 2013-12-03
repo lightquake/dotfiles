@@ -11,3 +11,6 @@ TAGS
 # Object files
 *.o
 *.hi
+
+# I like taking notes sometimes.
+/local.org
