@@ -57,23 +57,27 @@
 ;; tahoe stuff
 (defvar tahoe-serve/prefix "http://serve.aleph-null.io/")
 
-(defun tahoe-serve/make-sentinel (filename)
+(defun tahoe-serve/make-sentinel (tempfile filename)
   (lambda (proc change)
     (when (eq (process-status proc) 'exit)
       (with-current-buffer "*tahoe-serve*"
         (let* ((uri (replace-regexp-in-string "\n$" "" (thing-at-point 'line)))
                (url (concat tahoe-serve/prefix uri)))
           (kill-new url)
-          (message (format "%s is uploaded at URL %s" filename url)))))))
+          (message (format "%s is uploaded at URL %s" filename url))
+          (delete-file tempfile))))))
 
 (defun tahoe-serve/put-region (start end filename)
   (interactive "r\nsFilename: ")
-  (let ((proc (start-process "tahoe serve" "*tahoe-serve*"
-                             "tahoe" "put" "-"
-                             (concat "paste/" filename))))
-    (set-process-sentinel proc (tahoe-serve/make-sentinel filename))
-    (process-send-region proc start end)
-    (process-send-eof proc)))
+  ;; For some reason running tahoe put - paste/filename and using
+  ;; process-send-region doesn't work sometimes.
+  (let* ((tempfile (make-temp-file "tahoe-put"))
+         (proc (progn
+                 (append-to-file start end tempfile)
+                 (start-process "tahoe serve" "*tahoe-serve*"
+                                "tahoe" "put" tempfile
+                                (concat "paste/" filename)))))
+    (set-process-sentinel proc (tahoe-serve/make-sentinel tempfile filename))))
 
 (defun tahoe-serve/put (filename)
   (interactive
