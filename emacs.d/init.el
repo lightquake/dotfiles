@@ -15,6 +15,11 @@
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'column-marker)
+(defun kata/mark-column-80 () (column-marker-1 80))
+(add-hook 'c-mode-common-hook 'kata/mark-column-80)
+(add-hook 'emacs-lisp-mode-hook 'kata/mark-column-80)
+(add-hook 'lisp-mode-hook 'kata/mark-column-80)
+
 
 ;; Markdown mode
 (require 'markdown-mode)
@@ -23,7 +28,6 @@
 ;; js2-mode
 (require 'js2-mode)
 (setq auto-mode-alist (cons '("\\.js" . js2-mode) auto-mode-alist))
-(add-hook 'js2-mode-hook (lambda () (interactive) (column-marker-1 80)))
 (setq auto-mode-alist (cons '("\\.json" . json-mode) auto-mode-alist))
 
 ;; yaml-mode
@@ -37,9 +41,6 @@
 (require 'rainbow-delimiters)
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-
-;; Always want markers at column 80.
-(add-hook 'c-mode-common-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Get the right $PATH.
 (require 'exec-path-from-shell)
