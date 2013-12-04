@@ -74,7 +74,7 @@
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; tahoe stuff
-(defvar tahoe-serve/prefix "http://serve.aleph-null.io/")
+(defvar tahoe-serve/prefix "https://serve.aleph-null.io/")
 
 (defun tahoe-serve/make-sentinel (tempfile filename)
   (lambda (proc change)
