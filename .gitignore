@@ -1,4 +1,5 @@
 /emacs.d/elpa
+/emacs.d/.cask
 /emacs.d/local.el
 /emacs.d/tramp
 /emacs.d/eshell/

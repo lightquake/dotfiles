@@ -4,9 +4,9 @@
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 (require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+(require 'pallet)
 
 ;; t to not error if it doesn't exist
 (load "~/.emacs.d/local" :noerror)
