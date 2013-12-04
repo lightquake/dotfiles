@@ -1,6 +1,7 @@
 (source melpa)
 (source gnu)
 
+(depends-on "apache-mode")
 (depends-on "auctex")
 (depends-on "cask")
 (depends-on "column-marker")
