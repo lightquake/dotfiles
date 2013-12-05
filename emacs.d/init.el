@@ -52,6 +52,25 @@
 (load "~/.emacs.d/haskell")
 
 
+;; nginx mode.
+(defun kata/clean-font-lock-face (x)
+  "Replace an old font-lock face with its new equivalent."
+  (if (eq x 'font-lock-pseudo-keyword-face) 'font-lock-keyword-face x))
+(defun kata/clean-font-lock-keywords (keywords)
+  "Replace all old font-lock faces in a keywords list with the new equivalents."
+  (mapc (lambda (keyword)
+          (setcdr keyword (if (symbolp (cdr keyword))
+                              (kata/clean-font-lock-face (cdr keyword))
+                            (mapcar 'kata/clean-font-lock-face (cdr keyword)))))
+        keywords))
+(add-hook 'nginx-mode-hook
+          (lambda () (kata/clean-font-lock-keywords nginx-font-lock-keywords)))
+(add-to-list 'auto-mode-alist '("nginx/sites-\\(available\\|enabled\\)/" .
+                                nginx-mode))
+(add-to-list 'auto-mode-alist '("nginx/conf.d/" .
+                                nginx-mode))
+
+
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; tahoe stuff

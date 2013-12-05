@@ -1,7 +1,6 @@
 (source melpa)
 (source gnu)
 
-(depends-on "apache-mode")
 (depends-on "auctex")
 (depends-on "cask")
 (depends-on "column-marker")
@@ -16,6 +15,7 @@
 (depends-on "js2-mode")
 (depends-on "magit")
 (depends-on "markdown-mode")
+(depends-on "nginx-mode")
 (depends-on "org-bullets")
 (depends-on "pallet")
 (depends-on "paredit")
