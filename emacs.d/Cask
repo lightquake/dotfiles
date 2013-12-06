@@ -11,6 +11,7 @@
 (depends-on "fic-mode")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
+(depends-on "hamlet-mode")
 (depends-on "haskell-mode")
 (depends-on "js2-mode")
 (depends-on "magit")
