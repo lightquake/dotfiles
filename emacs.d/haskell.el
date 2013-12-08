@@ -19,4 +19,11 @@
   ;; groups. C-u f8 to jump back again.
   (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-navigate-imports))
 
-(require 'hamlet-mode)
+(require 'mmm-vars)
+(mmm-add-classes
+ '((hamlet-quasiquote
+    :submode hamlet-mode
+    :delimiter-mode nil
+    :front "\\[x?hamlet|"
+    :back "|\\]")))
+(mmm-add-mode-ext-class 'haskell-mode nil 'hamlet-quasiquote)
