@@ -66,6 +66,9 @@
 (add-to-list 'auto-mode-alist '("nginx/conf.d/" .
                                 nginx-mode))
 
+;; smart mode line.
+(sml/setup)
+
 
 ;;;;; Miscellaneous stuff ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -211,6 +214,8 @@
  '(org-tags-column -75)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
+ '(sml/hidden-modes (quote (" Undo-Tree" " Ind" " hl-p")))
+ '(sml/replacer-regexp-list (quote (("^~/org/" ":Org:") ("^~/code/dotfiles/emacs\\.d/" ":ED:") ("^~/\\.emacs\\.d/" ":ED:") ("^/sudo:.*:" ":SU:") ("^~/Documents/" ":Doc:") ("^~/Dropbox" ":DB:") ("^:\\([^:]*\\):Documento?s/" ":\\1/Doc:") ("^/scpc:amateurtopologist.com:" ":neo-exdeath:"))))
  '(tab-width 4)
  '(tool-bar-mode nil)
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
