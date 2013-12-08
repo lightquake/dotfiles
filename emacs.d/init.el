@@ -16,7 +16,6 @@
 
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(require 'column-marker)
 (defun kata/mark-column-80 () (column-marker-1 80))
 (add-hook 'c-mode-common-hook 'kata/mark-column-80)
 (add-hook 'emacs-lisp-mode-hook 'kata/mark-column-80)
@@ -24,23 +23,16 @@
 
 
 ;; Markdown mode
-(require 'markdown-mode)
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
 
 ;; js2-mode
-(require 'js2-mode)
 (setq auto-mode-alist (cons '("\\.js" . js2-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.json" . json-mode) auto-mode-alist))
 
-;; yaml-mode
-(require 'yaml-mode)
-
 ;; Magit stuff
-(require 'magit)
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
 ;; Rainbows!
-(require 'rainbow-delimiters)
 (add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
