@@ -61,6 +61,8 @@ normal load-path."
 ;; Haskell stuff, too much for here.
 (load "~/.emacs.d/haskell")
 
+(require 'mmm-auto)
+
 
 ;; nginx mode.
 (defun kata/clean-font-lock-face (x)
@@ -210,7 +212,7 @@ normal load-path."
  '(js-indent-level 2)
  '(js2-basic-offset 2)
  '(js2-global-externs (quote ("$" "_" "require" "define" "console")))
- '(mmm-global-mode (quote maybe))
+ '(mmm-global-mode (quote maybe) nil (mmm-mode))
  '(org-agenda-files (quote ("/amateurtopologist.com:/home/kata/org/habit.org" "/amateurtopologist.com:/home/kata/org/main.org")))
  '(org-agenda-skip-deadline-prewarning-if-scheduled 2)
  '(org-agenda-skip-scheduled-if-done t)
