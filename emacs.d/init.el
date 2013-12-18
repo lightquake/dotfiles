@@ -16,6 +16,20 @@
 
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(defun kata/fix-flycheck-emacs-lisp-load-path ()
+  "Add all directories in the cask elpa directory to the elisp load-path.
+
+This is necessary because some things, like dash, aren't on the
+normal load-path."
+  (setq flycheck-emacs-lisp-load-path load-path)
+  (let ((elpa-directory (expand-file-name
+                         (format "~/.emacs.d/.cask/%s/elpa/" emacs-version))))
+    (mapc (lambda (dir) (add-to-list 'flycheck-emacs-lisp-load-path dir))
+          ;; All the packages have the compilation date at the end; this filters
+          ;; out things like ., .., and the archives.
+          (directory-files elpa-directory t "[0-9]+$"))))
+(eval-after-load 'flycheck 'kata/fix-flycheck-emacs-lisp-load-path)
+
 (defun kata/mark-column-80 () (column-marker-1 80))
 (add-hook 'c-mode-common-hook 'kata/mark-column-80)
 (add-hook 'emacs-lisp-mode-hook 'kata/mark-column-80)
@@ -179,6 +193,7 @@
  '(custom-safe-themes (quote ("de2c46ed1752b0d0423cde9b6401062b67a6a1300c068d5d7f67725adc6c3afb" "e53cc4144192bb4e4ed10a3fa3e7442cae4c3d231df8822f6c02f1220a0d259a" "1affe85e8ae2667fb571fc8331e1e12840746dae5c46112d5abb0c3a973f5f5a" "d05303816026cec734e26b59e72bb9e46480205e15a8a011c62536a537c29a1a" "4d66773cc6d32566eaf2c9c7ce11269d9eb26e428a1a4fa10e97bae46ff615da" default)))
  '(doc-view-continuous t)
  '(fill-column 80)
+ '(flycheck-disabled-checkers (quote (haskell-ghc)))
  '(flycheck-highlighting-mode (quote lines))
  '(git-commit-max-summary-line-length 50)
  '(haskell-indentation-cycle-warn nil)

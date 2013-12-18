@@ -19,6 +19,9 @@
   ;; groups. C-u f8 to jump back again.
   (define-key haskell-mode-map (kbd "C-c C-i") 'haskell-navigate-imports))
 
+(eval-after-load 'flycheck
+  '(require 'flycheck-hdevtools))
+
 (require 'mmm-vars)
 (mmm-add-classes
  '((hamlet-quasiquote

@@ -9,6 +9,8 @@
 (depends-on "exec-path-from-shell")
 (depends-on "f")
 (depends-on "fic-mode")
+(depends-on "flycheck")
+(depends-on "flycheck-hdevtools")
 (depends-on "git-commit-mode")
 (depends-on "git-rebase-mode")
 (depends-on "hamlet-mode")
