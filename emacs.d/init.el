@@ -1,4 +1,9 @@
-;;; -*- lexical-binding: t -*-
+;;; init.el --- Load point for emacs configuration -*- lexical-binding: t -*-
+
+;;; Commentary:
+;; I really need to org-ify and clean this up.
+
+;;; Code:
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/"))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
@@ -20,7 +25,9 @@
 ;; Add all directories in the cask elpa directory to the elisp load-path.  This
 ;; is necessary because some things, like dash, aren't on the normal load-path.
 
-(setq flycheck-emacs-lisp-load-path load-path)
+;; defvar is OK here because the defvar in flycheck will override the docstring
+;; but not the value.
+(defvar flycheck-emacs-lisp-load-path load-path)
 (let ((elpa-directory (expand-file-name
                        (format "~/.emacs.d/.cask/%s/elpa/" emacs-version))))
   (mapc (lambda (dir) (add-to-list 'flycheck-emacs-lisp-load-path dir))
@@ -28,11 +35,8 @@
         ;; out things like ., .., and the archives.
         (directory-files elpa-directory t "[0-9]+$")))
 
-(defun kata/mark-column-80 () (column-marker-1 80))
-(add-hook 'c-mode-common-hook 'kata/mark-column-80)
-(add-hook 'emacs-lisp-mode-hook 'kata/mark-column-80)
-(add-hook 'lisp-mode-hook 'kata/mark-column-80)
 
+(add-hook 'prog-mode-hook (lambda () (column-marker-1 80)))
 
 ;; Markdown mode
 (setq auto-mode-alist (cons '("\\.markdown" . markdown-mode) auto-mode-alist))
@@ -47,6 +51,7 @@
 
 ;; Lisp/elisp type things.
 (defun kata/add-lisp-hook (hook)
+  "Add HOOK to both Lisp mode and Emacs Lisp mode hooks."
   (add-hook 'lisp-mode-hook hook)
   (add-hook 'emacs-lisp-mode-hook hook))
 
@@ -63,13 +68,14 @@
 
 (require 'mmm-auto)
 
-
 ;; nginx mode.
-(defun kata/clean-font-lock-face (x)
-  "Replace an old font-lock face with its new equivalent."
-  (if (eq x 'font-lock-pseudo-keyword-face) 'font-lock-keyword-face x))
+
+(defvar nginx-font-lock-keywords)
+(defun kata/clean-font-lock-face (face)
+  "Replace an old font-lock face FACE with its new equivalent."
+  (if (eq face 'font-lock-pseudo-keyword-face) 'font-lock-keyword-face face))
 (defun kata/clean-font-lock-keywords (keywords)
-  "Replace all old font-lock faces in a keywords list with the new equivalents."
+  "Replace all old font-lock faces in KEYWORDS with the new equivalents."
   (mapc (lambda (keyword)
           (setcdr keyword (if (symbolp (cdr keyword))
                               (kata/clean-font-lock-face (cdr keyword))
@@ -92,7 +98,12 @@
 (defvar tahoe-serve/prefix "https://serve.aleph-null.io/")
 
 (defun tahoe-serve/make-sentinel (tempfile filename)
-  (lambda (proc change)
+  "Create a tahoe process sentinel function.
+
+When the tahoe put process is done uploading the file TEMPFILE
+into a file named FILENAME, it will delete TEMPFILE and show a
+message stating the upload is finished."
+  (lambda (proc _)
     (when (eq (process-status proc) 'exit)
       (with-current-buffer "*tahoe-serve*"
         (let* ((uri (replace-regexp-in-string "\n$" "" (thing-at-point 'line)))
@@ -102,6 +113,7 @@
           (delete-file tempfile))))))
 
 (defun tahoe-serve/put-region (start end filename)
+  "Upload the region from START to END using FILENAME as the name."
   (interactive "r\nsFilename: ")
   ;; For some reason running tahoe put - paste/filename and using
   ;; process-send-region doesn't work sometimes.
@@ -114,6 +126,7 @@
     (set-process-sentinel proc (tahoe-serve/make-sentinel tempfile filename))))
 
 (defun tahoe-serve/put (filename)
+  "Upload the current buffer using FILENAME as the name."
   (interactive
    (let ((buffer-basename (and (buffer-file-name)
                                (file-name-nondirectory (buffer-file-name)))))
@@ -160,12 +173,18 @@
 (prefer-coding-system 'utf-8)
 
 (add-hook 'markdown-mode-hook 'visual-line-mode)
-;; Make sure fenced code blocks are highlighted before anything else.
-(defun my/patch-font-lock-keywords ()
+
+(defvar markdown-mode-font-lock-keywords-basic)
+(defun kata/patch-markdown-font-lock-keywords ()
+  "Fix markdown mode's font lock keywords.
+
+Edits the markdown font lock keywords so fenced code blocks are
+highlighted before anything else; this prevents issues when
+fenced code blocks whitespace-indented blocks."
   (setq markdown-mode-font-lock-keywords-basic
         (cons (cons 'markdown-match-fenced-code-blocks '((0 markdown-pre-face)))
               markdown-mode-font-lock-keywords-basic)))
-(add-hook 'markdown-mode-hook 'my/patch-font-lock-keywords)
+(add-hook 'markdown-mode-hook 'kata/patch-markdown-font-lock-keywords)
 
 (require 'undo-tree)
 (global-undo-tree-mode)
@@ -259,3 +278,5 @@
  '(table-cell ((t (:foreground "peach puff"))) t)
  '(wc-goal-face ((t (:foreground "pale green"))) t))
 (put 'downcase-region 'disabled nil)
+
+;;; init.el ends here

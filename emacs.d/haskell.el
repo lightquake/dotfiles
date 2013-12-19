@@ -1,3 +1,9 @@
+;;; haskell.el -- Haskell-specific Emacs customization
+
+;;; Commentary:
+
+;;; Code:
+
 (require 'fic-mode)
 (add-hook 'haskell-mode-hook 'fic-mode)
 (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -8,6 +14,7 @@
 
 ;; Haskell mode keybindings.
 (defun haskell-bindings-hook ()
+  "Set up haskell-mode bindings."
   ;; Load the file into the REPL.
   (define-key haskell-mode-map (kbd "C-c C-l") 'haskell-process-load-file)
   ;; Switch to the REPL.
@@ -30,3 +37,5 @@
     :front "\\[x?hamlet|"
     :back "|\\]")))
 (mmm-add-mode-ext-class 'haskell-mode nil 'hamlet-quasiquote)
+
+;;; haskell.el ends here
