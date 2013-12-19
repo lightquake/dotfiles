@@ -16,19 +16,17 @@
 
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun kata/fix-flycheck-emacs-lisp-load-path ()
-  "Add all directories in the cask elpa directory to the elisp load-path.
 
-This is necessary because some things, like dash, aren't on the
-normal load-path."
-  (setq flycheck-emacs-lisp-load-path load-path)
-  (let ((elpa-directory (expand-file-name
-                         (format "~/.emacs.d/.cask/%s/elpa/" emacs-version))))
-    (mapc (lambda (dir) (add-to-list 'flycheck-emacs-lisp-load-path dir))
-          ;; All the packages have the compilation date at the end; this filters
-          ;; out things like ., .., and the archives.
-          (directory-files elpa-directory t "[0-9]+$"))))
-(eval-after-load 'flycheck 'kata/fix-flycheck-emacs-lisp-load-path)
+;; Add all directories in the cask elpa directory to the elisp load-path.  This
+;; is necessary because some things, like dash, aren't on the normal load-path.
+
+(setq flycheck-emacs-lisp-load-path load-path)
+(let ((elpa-directory (expand-file-name
+                       (format "~/.emacs.d/.cask/%s/elpa/" emacs-version))))
+  (mapc (lambda (dir) (add-to-list 'flycheck-emacs-lisp-load-path dir))
+        ;; All the packages have the compilation date at the end; this filters
+        ;; out things like ., .., and the archives.
+        (directory-files elpa-directory t "[0-9]+$")))
 
 (defun kata/mark-column-80 () (column-marker-1 80))
 (add-hook 'c-mode-common-hook 'kata/mark-column-80)
