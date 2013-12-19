@@ -44,13 +44,15 @@
 ;; Magit stuff
 (global-set-key (kbd "C-c C-g") 'magit-status)
 
-;; Rainbows!
-(add-hook 'lisp-mode-hook 'rainbow-delimiters-mode)
-(add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
 
-;; Editing lisps without paredit is incredibly painful
-(add-hook 'lisp-mode-hook 'paredit-mode)
-(add-hook 'emacs-lisp-mode-hook 'paredit-mode)
+;; Lisp/elisp type things.
+(defun kata/add-lisp-hook (hook)
+  (add-hook 'lisp-mode-hook hook)
+  (add-hook 'emacs-lisp-mode-hook hook))
+
+(kata/add-lisp-hook 'rainbow-delimiters-mode)
+(kata/add-lisp-hook 'paredit-mode)
+(kata/add-lisp-hook 'flycheck-mode)
 
 ;; Get the right $PATH.
 (require 'exec-path-from-shell)
