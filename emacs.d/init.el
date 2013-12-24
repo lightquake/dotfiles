@@ -13,9 +13,6 @@
 (cask-initialize)
 (require 'pallet)
 
-;; t to not error if it doesn't exist
-(load "~/.emacs.d/local" :noerror)
-
 ;; start server for emacsclient
 (server-start)
 
@@ -278,5 +275,10 @@ fenced code blocks whitespace-indented blocks."
  '(table-cell ((t (:foreground "peach puff"))) t)
  '(wc-goal-face ((t (:foreground "pale green"))) t))
 (put 'downcase-region 'disabled nil)
+
+
+;; t to not error if it doesn't exist
+(load "~/.emacs.d/local" :noerror)
+
 
 ;;; init.el ends here
