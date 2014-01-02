@@ -3,6 +3,8 @@
 *#
 TAGS
 *_hdevtools*
+flycheck_*
+.#*
 
 # Haskell stuff
 /.cabal-sandbox
