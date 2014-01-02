@@ -235,6 +235,7 @@ fenced code blocks whitespace-indented blocks."
  '(org-bullets-bullet-list (quote ("◉" "○" "◎")))
  '(org-columns-default-format "%25ITEM %SCHEDULED %TAGS")
  '(org-enforce-todo-dependencies t)
+ '(org-habit-following-days 3)
  '(org-log-done (quote time))
  '(org-log-repeat (quote time))
  '(org-modules (quote (org-bbdb org-bibtex org-docview org-gnus org-info org-jsinfo org-habit org-irc org-mew org-mhe org-rmail org-vm org-wl org-w3m)))
