@@ -261,13 +261,13 @@ fenced code blocks whitespace-indented blocks."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(diff-added ((t (:foreground "green3"))) t)
- '(diff-file-header ((t (:weight bold))) t)
- '(diff-header ((t nil)) t)
- '(diff-removed ((t (:foreground "red3"))) t)
- '(hl-line ((t (:inherit highlight :background "#aaa"))) t)
- '(magit-item-highlight ((t (:background "dim gray"))) t)
- '(magit-log-graph ((t (:foreground "grey80" :weight bold))) t)
+ '(diff-added ((t (:foreground "green3"))))
+ '(diff-file-header ((t (:weight bold))))
+ '(diff-header ((t nil)))
+ '(diff-removed ((t (:foreground "red3"))))
+ '(hl-line ((t (:inherit highlight :background "#aaa"))))
+ '(magit-item-highlight ((t (:background "dim gray"))))
+ '(magit-log-graph ((t (:foreground "grey80" :weight bold))))
  '(org-agenda-structure ((t (:foreground "light gray"))))
  '(org-done ((t (:foreground "#00ff00" :weight bold))))
  '(org-habit-alert-face ((t (:background "gold" :foreground "black"))))
@@ -275,8 +275,8 @@ fenced code blocks whitespace-indented blocks."
  '(org-scheduled ((t (:foreground "medium turquoise"))))
  '(org-scheduled-previously ((t (:foreground "yellow"))))
  '(org-scheduled-today ((t (:foreground "medium turquoise"))))
- '(table-cell ((t (:foreground "peach puff"))) t)
- '(wc-goal-face ((t (:foreground "pale green"))) t))
+ '(table-cell ((t (:foreground "peach puff"))))
+ '(wc-goal-face ((t (:foreground "pale green")))))
 (put 'downcase-region 'disabled nil)
 
 
