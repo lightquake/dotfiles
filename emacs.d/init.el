@@ -52,9 +52,16 @@
   (add-hook 'lisp-mode-hook hook)
   (add-hook 'emacs-lisp-mode-hook hook))
 
+(defun kata/flycheck-if-mine ()
+  "Enable flycheck mode if the file is in ~/code."
+  (if (and buffer-file-truename
+           (string-prefix-p (expand-file-name "~/code")
+                            (expand-file-name buffer-file-truename)))
+      (flycheck-mode)))
+
 (kata/add-lisp-hook 'rainbow-delimiters-mode)
 (kata/add-lisp-hook 'paredit-mode)
-(kata/add-lisp-hook 'flycheck-mode)
+(kata/add-lisp-hook 'kata/flycheck-if-mine)
 
 ;; Get the right $PATH.
 (require 'exec-path-from-shell)
