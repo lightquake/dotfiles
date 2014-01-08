@@ -241,6 +241,8 @@ fenced code blocks whitespace-indented blocks."
  '(org-agenda-skip-scheduled-if-done t)
  '(org-agenda-start-on-weekday nil)
  '(org-bullets-bullet-list (quote ("◉" "○" "◎")))
+ '(org-capture-templates (quote (("j" "Journal entry" entry (file+datetree "~/org/journal.org.gpg") "* %?") ("t" "Quick todo" entry (file+headline "" "Tasks") "* TODO %?
+  "))))
  '(org-columns-default-format "%25ITEM %SCHEDULED %TAGS")
  '(org-default-notes-file "~/org/notes.org")
  '(org-enforce-todo-dependencies t)
