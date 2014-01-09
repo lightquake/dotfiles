@@ -13,9 +13,6 @@
 (cask-initialize)
 (require 'pallet)
 
-;; start server for emacsclient
-(server-start)
-
 ;;;;; Programming-related things ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
@@ -201,6 +198,8 @@ fenced code blocks whitespace-indented blocks."
 (define-key global-map (kbd "C-c a") 'org-agenda)
 (add-hook 'org-mode-hook 'visual-line-mode)
 (add-hook 'org-mode-hook 'org-bullets-mode)
+(global-set-key (kbd "H-c") 'org-capture)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
