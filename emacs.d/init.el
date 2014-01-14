@@ -162,6 +162,7 @@ message stating the upload is finished."
 ;; Ido.
 (require 'ido)
 (ido-mode t)
+(ido-ubiquitous-mode t)
 
 ;; Trim whitespace on save.
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
