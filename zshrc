@@ -9,5 +9,5 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/.cask/bin:$HOME/.cabal/bin:$PATH
-
+export PATH=/usr/local/bin:$HOME/.cask/bin:$HOME/.cabal/bin:$PATH
+[ -f $HOME/.zshrc.local ] && source $HOME/.zshrc.local
