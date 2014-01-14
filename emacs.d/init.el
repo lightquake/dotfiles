@@ -221,6 +221,7 @@ fenced code blocks whitespace-indented blocks."
  '(flycheck-disabled-checkers (quote (haskell-ghc)))
  '(flycheck-highlighting-mode (quote lines))
  '(git-commit-max-summary-line-length 50)
+ '(gnutls-min-prime-bits 1024)
  '(haskell-indentation-cycle-warn nil)
  '(haskell-indentation-ifte-offset 4)
  '(haskell-indentation-layout-offset 4)
