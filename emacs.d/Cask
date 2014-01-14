@@ -23,6 +23,7 @@
 (depends-on "mmm-mode")
 (depends-on "nginx-mode")
 (depends-on "org-bullets")
+(depends-on "page-break-lines")
 (depends-on "pallet")
 (depends-on "paredit")
 (depends-on "rainbow-delimiters")

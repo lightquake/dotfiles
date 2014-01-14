@@ -257,6 +257,7 @@ fenced code blocks whitespace-indented blocks."
  '(org-src-preserve-indentation t)
  '(org-startup-indented t)
  '(org-tags-column -76)
+ '(page-break-lines-char 45)
  '(scroll-bar-mode nil)
  '(scss-compile-at-save nil)
  '(sml/hidden-modes (quote (" Undo-Tree" " Ind" " hl-p")))
