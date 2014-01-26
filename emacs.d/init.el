@@ -143,12 +143,12 @@ message stating the upload is finished."
 ;; Random keybindings.
 (global-set-key (kbd "C-x k") 'kill-buffer)
 
-;; Windmove. Not all platforms are going to have hyper, but that's fine.
+;; Windmove. Not all platforms are going to have super, but that's fine.
 (global-set-key (kbd "C-c <left>") 'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
 (global-set-key (kbd "C-c <up>") 'windmove-up)
 (global-set-key (kbd "C-c <down>") 'windmove-down)
-(windmove-default-keybindings 'hyper)
+(windmove-default-keybindings 'super)
 
 
 ;; I like auto-indent on newline, dammit.
